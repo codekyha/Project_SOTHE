@@ -1,154 +1,236 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SOTHE: Solitonic Optical Thermodynamics of Event Horizons
-% Full SSFM simulation + entropy diagnostics
+%% ========================================================================
+%  Optical Entropy, Solitonic Horizon & Hawking Temperature Extraction
+%  GNLSE with beta2, beta3, Kerr nonlinearity
+%  Demonstrates Generalized Second Law + Effective Hawking Temperature
 %
-% Author: H. Oguz
-% Purpose: Numerical validation of generalized second law for optical horizons
-%
-% Governing equation:
-% dA/dz = -i beta2/2 d^2A/dT^2 + beta3/6 d^3A/dT^3 + i gamma |A|^2 A
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Author: H. Oguz
+%% ========================================================================
 
-clear; clc;
+clear; clc; close all;
 
-%% ---------------- Physical constants ----------------
-c     = 2.99792458e8;        % m/s
-hbar  = 1.054571817e-34;     % J*s
-kB    = 1.380649e-23;        % J/K
+%% ------------------------------------------------------------------------
+%% 1. Physical Parameters
+%% ------------------------------------------------------------------------
 
-%% ---------------- Fiber parameters ------------------
-lambda0 = 800e-9;                    % m
-omega0  = 2*pi*c/lambda0;            % rad/s
+c_light = 299792.458;            % Speed of light [nm/ps]
+lambda0 = 800;                  % Central wavelength [nm]
+omega0  = 2*pi*c_light/lambda0; % rad/ps
 
-beta2 = -15e-27;                     % s^2/m
-beta3 =  0.1e-39;                    % s^3/m
-gamma =  1.2e-3;                     % 1/(W m)
+beta2 = -15.0;                  % ps^2/km (anomalous)
+beta3 = +0.10;                  % ps^3/km
+gamma = 0.1;                    % 1/W/km
 
-%% ---------------- Soliton parameters ----------------
-T0 = 50e-15;                         % s
-P0 = abs(beta2)/(gamma*T0^2);        % Fundamental soliton power
-Nsoliton = 1;                        % Soliton order (1 or 3)
+N_sol = 3;                      % Soliton order (fission regime)
+T0    = 0.050;                  % Pulse width [ps]
 
-P0 = Nsoliton^2 * P0;
+%% ------------------------------------------------------------------------
+%% 2. Numerical Grid
+%% ------------------------------------------------------------------------
 
-%% ---------------- Temporal grid ---------------------
-NT   = 2^14;                         % Grid points
-Tmax = 10*T0;                        % Window half-width
-dt   = 2*Tmax/NT;
-t    = (-NT/2:NT/2-1)*dt;
+n_points = 2^14;
+T_window = 10.0;                % ps
 
-%% ---------------- Frequency grid --------------------
-dw = 2*pi/(NT*dt);
-omega = fftshift((-NT/2:NT/2-1))*dw;
+dt = T_window / n_points;
+t  = (-n_points/2:n_points/2-1).' * dt;
 
-%% ---------------- Initial condition -----------------
-A = sqrt(P0)*sech(t/T0);
+dw = 2*pi / T_window;
+w  = (-n_points/2:n_points/2-1).' * dw;
 
-%% ---------------- Propagation parameters ------------
-LD  = T0^2/abs(beta2);
-LNL = 1/(gamma*P0);
-dz  = min([LD, LNL])/50;             % Stability-controlled step
-Nz  = 3000;                          % Number of steps
-z   = (0:Nz-1)*dz;
+%% ------------------------------------------------------------------------
+%% 3. Initial Conditions
+%% ------------------------------------------------------------------------
 
-%% ---------------- Linear operator -------------------
-Lw = 1i*( beta2/2*omega.^2 - beta3/6*omega.^3 );
+LD = T0^2 / abs(beta2) * 1e-3;          % Dispersion length [km]
+P0 = (N_sol^2 * abs(beta2)) / (gamma*T0^2);
 
-%% ---------------- Spectral filters -----------------
-DeltaOmegaS = 5e13;                  % Soliton bandwidth
-WS = exp(-((omega-omega0)/DeltaOmegaS).^8);
-WR = 1 - WS;
+U = sqrt(P0) * sech(t/T0);              % Initial soliton
 
-%% ---------------- Storage arrays -------------------
-Srad = zeros(1,Nz);
-Shor = zeros(1,Nz);
-Stot = zeros(1,Nz);
+D_op = 1i * (beta2/2 * w.^2 + beta3/6 * w.^3);
 
-EnergySol = zeros(1,Nz);
-EnergyRad = zeros(1,Nz);
+%% ------------------------------------------------------------------------
+%% 4. Spectral Partition (Thermodynamic Split)
+%% ------------------------------------------------------------------------
 
-%% ---------------- Main SSFM loop --------------------
-for n = 1:Nz
+filter_width = 4 / T0;
+mask_sol = exp(-(w/filter_width).^8);
+mask_rad = 1 - mask_sol;
 
-    % Linear half-step
-    A = ifft( exp(Lw*dz/2) .* fft(A) );
+%% ------------------------------------------------------------------------
+%% 5. Split-Step Fourier Method
+%% ------------------------------------------------------------------------
 
-    % Nonlinear full-step
-    A = A .* exp(1i*gamma*abs(A).^2*dz);
+L_prop  = 80 * LD;
+n_steps = 12000;
+dz      = L_prop / n_steps;
 
-    % Linear half-step
-    A = ifft( exp(Lw*dz/2) .* fft(A) );
+half_step_disp = exp(D_op * dz / 2);
 
-    % Spectrum
-    Aw = fftshift(fft(A));
-    Iw = abs(Aw).^2;
+n_saves = 300;
+save_idx = round(linspace(1,n_steps,n_saves));
+z_save = linspace(0,L_prop,n_saves);
 
-    % ---------------- Radiation entropy ----------------
-    Prad = WR .* Iw;
-    Prad = Prad / trapz(omega,Prad);
+U_save = zeros(n_points,n_saves);
+S_rad_hist = zeros(1,n_saves);
+S_hor_hist = zeros(1,n_saves);
 
-    Srad(n) = -kB * trapz(omega, Prad .* log(Prad + 1e-20));
+counter = 1;
 
-    % ---------------- Horizon entropy ------------------
-    Nsol = trapz(omega, WS .* Iw ./ (hbar*abs(omega)));
-    eta  = 1;   % dimensionless geometric factor
-    Shor(n) = eta * Nsol;
+fprintf('Running SSFM: %.1f L_D, dz = %.2e km\n',L_prop/LD,dz);
 
-    % ---------------- Energies (diagnostic) ------------
-    EnergySol(n) = trapz(omega, WS .* Iw);
-    EnergyRad(n) = trapz(omega, WR .* Iw);
+for k = 1:n_steps
 
-    % ---------------- Total entropy --------------------
-    Stot(n) = Srad(n) + Shor(n);
+    U = ifft( fft(U) .* half_step_disp );
+    U = U .* exp(1i*gamma*abs(U).^2*dz);
+    U = ifft( fft(U) .* half_step_disp );
 
-    % Progress update
-    if mod(n,200)==0
-        fprintf('Step %d / %d completed\n',n,Nz);
+    if k == save_idx(counter)
+
+        U_save(:,counter) = U;
+
+        Spec = abs(fftshift(fft(U))).^2;
+        W = fftshift(w);
+        Msol = fftshift(mask_sol);
+
+        % Horizon entropy proxy
+        S_hor_hist(counter) = trapz(W, Spec .* Msol);
+
+        % Radiation entropy
+        Spec_rad = Spec .* (1 - Msol);
+        Prad = trapz(W, Spec_rad);
+
+        if Prad > 1e-18
+            p = Spec_rad / Prad;
+            valid = p > 1e-15;
+            S_rad_hist(counter) = ...
+                -trapz(W(valid), p(valid).*log(p(valid)));
+        end
+
+        counter = counter + 1;
+        if counter > n_saves, break; end
     end
 end
 
-%% ---------------- Entropy production rate -----------
-dStot_dz = diff(Stot)/dz;
+fprintf('Simulation complete.\n');
 
-%% ===================== VISUALIZATION =====================
+%% ------------------------------------------------------------------------
+%% 6. Robust Hawking Temperature Extraction (FIXED)
+%% ------------------------------------------------------------------------
+idx_fit = round(0.95*n_saves);          % Use very end of simulation
+U_fit   = U_save(:,idx_fit);
+Spec    = abs(fftshift(fft(U_fit))).^2;
+omega   = fftshift(w);
 
-%% Figure 1: Temporal evolution
-figure;
-imagesc(z*1e3, t*1e15, abs(A).^2);
-axis xy;
-xlabel('z (mm)');
-ylabel('T (fs)');
-title('Temporal Intensity Evolution');
-colorbar;
+% --- 1. Locate Resonant Radiation (RR) Peak ---
+% We look for the highest peak in the dispersive wave region
+% (Assuming beta3 > 0, RR is usually at positive detuning relative to zero)
+Msol = fftshift(mask_sol);
+Spec_rad = Spec .* (1 - Msol); 
 
-%% Figure 2: Spectral evolution (final)
-figure;
-plot((omega-omega0)/2/pi/1e12, Iw/max(Iw),'k','LineWidth',1.5);
-xlabel('Frequency detuning (THz)');
-ylabel('Normalized spectral intensity');
-title('Final Optical Spectrum');
-grid on;
+% Find max peak outside soliton bandwidth
+[max_val, idx_RR] = max(Spec_rad);
+omega_RR = omega(idx_RR);
 
-%% Figure 3: Entropy evolution
-figure;
-plot(z*1e3, Srad,'r','LineWidth',1.5); hold on;
-plot(z*1e3, Shor,'b','LineWidth',1.5);
-plot(z*1e3, Stot,'k','LineWidth',2);
-xlabel('z (mm)');
-ylabel('Entropy (arb. units)');
-legend('Radiation','Horizon','Total','Location','best');
-title('Entropy Flow and Generalized Second Law');
-grid on;
+% --- 2. Define Thermal Tail Region ---
+% We scan slightly BEYOND the RR peak to find the exponential decay.
+% Reduced buffer to 10% to capture the tail immediately after the peak.
+omega_buffer = 0.10 * abs(omega_RR); 
 
-%% Figure 4: GSL diagnostic
-figure;
-plot(z(1:end-1)*1e3, dStot_dz,'k','LineWidth',1.5);
-xlabel('z (mm)');
-ylabel('dS_{tot}/dz');
-title('Generalized Second Law Diagnostic');
-yline(0,'--');
-grid on;
+if omega_RR > 0
+    % RR is on the right (Blue shift) -> Tail is to the right
+    fit_mask = (omega > omega_RR + omega_buffer) & ...
+               (Spec > 1e-15*max(Spec)) & ...
+               (Spec < 0.5*max_val); % Look below the peak
+else
+    % RR is on the left (Red shift) -> Tail is to the left
+    fit_mask = (omega < omega_RR - omega_buffer) & ...
+               (Spec > 1e-15*max(Spec)) & ...
+               (Spec < 0.5*max_val);
+end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% END OF FILE
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+omega_fit = omega(fit_mask);
+Spec_fit  = Spec(fit_mask);
+
+% --- 3. Perform Fit Safety Check ---
+if numel(omega_fit) < 10
+    warning('Still not enough points. Skipping T_H extraction.');
+    T_H_eff = NaN;
+    lnI = []; 
+    p = [];
+else
+    lnI = log(Spec_fit);
+    
+    % Linear regression: ln(I) = - (hbar/kB*T) * w + C
+    p = polyfit(omega_fit, lnI, 1);
+    slope = p(1); % Units: [ps]
+    
+    % Physical constants
+    hbar_J = 1.0545718e-34;
+    kB_J   = 1.380649e-23;
+    
+    % Calculate Temperature
+    % Slope is negative for decay. T = -hbar / (kB * slope_SI)
+    % Convert slope from ps to s: slope_SI = slope * 1e-12
+    slope_SI = slope * 1e-12; 
+    
+    T_H_eff = abs(hbar_J / (kB_J * slope_SI)); 
+end
+
+if ~isnan(T_H_eff)
+    fprintf('RR Peak found at: %.2f THz\n', omega_RR/(2*pi));
+    fprintf('Effective Hawking Temperature: T_H = %.1f K\n', T_H_eff);
+else
+    fprintf('Could not extract Temperature (Pulse might not have fissioned yet).\n');
+end
+
+%% ------------------------------------------------------------------------
+%% 7. Visualization (Safe Plotting)
+%% ------------------------------------------------------------------------
+S_hor = S_hor_hist / max(S_hor_hist);
+S_rad = S_rad_hist / max(S_rad_hist);
+S_tot = S_hor + S_rad;
+
+freq_THz = fftshift(w)/(2*pi);
+Spectrogram_dB = 10*log10(abs(fftshift(fft(U_save,[],1),1)).^2 + 1e-16);
+
+figure('Color','w','Position',[100 100 1200 400])
+
+% --- (a) Spectral Map ---
+subplot(1,3,1)
+imagesc(z_save, freq_THz, Spectrogram_dB)
+axis xy
+ylim([-100 100]) % Adjust zoom if RR is outside
+caxis([-40 10])  % Better contrast
+xlabel('z (km)')
+ylabel('\nu (THz)')
+title('(a) Spectral Evolution')
+colormap jet
+colorbar
+
+% --- (b) Entropy Law ---
+subplot(1,3,2)
+plot(z_save, S_hor, 'r--', 'LineWidth', 2); hold on
+plot(z_save, S_rad, 'b', 'LineWidth', 2)
+plot(z_save, S_tot, 'k', 'LineWidth', 1.5)
+grid on
+xlabel('z (km)')
+ylabel('Normalized Entropy')
+title('(b) Generalized Second Law')
+legend('Horizon S_{BH}', 'Radiation S_{rad}', 'Total S_{tot}', 'Location','best')
+
+% --- (c) Hawking Temperature Fit ---
+subplot(1,3,3)
+if ~isnan(T_H_eff) && ~isempty(lnI)
+    plot(omega_fit/(2*pi), lnI, 'b.', 'MarkerSize', 6); hold on
+    plot(omega_fit/(2*pi), polyval(p, omega_fit), 'r', 'LineWidth', 2)
+    xlabel('\nu (THz)')
+    ylabel('ln(PSD)')
+    title(['(c) T_H Fit \approx ' num2str(T_H_eff,'%.0f') ' K'])
+    grid on
+    legend('RR Tail Data', 'Thermal Fit')
+else
+    text(0.5, 0.5, 'Fit Failed / No Fission', 'HorizontalAlignment', 'center')
+    title('(c) Thermal Tail Analysis')
+end
+
+print('Optical_Hawking_Entropy_Fixed','-dpng','-r300')
+fprintf('Figure saved.\n');

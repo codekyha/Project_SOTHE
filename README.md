@@ -2,11 +2,12 @@
 
 Companion data and code for the revision of:
 
-> H. Oguz, *Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories*, **Classical and Quantum Gravity** (manuscript CQG-114816, revision submitted 2026).
+> H. Oguz, *Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories*, **Classical and Quantum Gravity** (manuscript CQG-114816, revision submitted 2026).  https://doi.org/10.48550/arXiv.2601.05156
+
 
 This is a **lightweight** supplementary package: it contains exactly what is needed to reproduce the paper's three headline claims (coarse-grained generalized second law, Hamiltonian photon-number conservation, Cherenkov phase-matching $k_{\mathrm{RR}}\delta_3\approx 1$), the figures that appear in the paper, and a small set of pre-computed numerical results. A larger codebase will accompany the published version on GitHub.
 
-A summary of what the package corrects relative to the original 2025 submission is in `NOTES.md`. A walkthrough of the physics with all formulae spelled out is in `EXPLANATION.md`.
+A walkthrough of the physics with all formulae spelled out is in `EXPLANATION.md`.
 
 ---
 
@@ -127,6 +128,6 @@ The MATLAB and Python sources are released under the **MIT License**. The figure
 
 ## 6. Contact
 
-H. Oguz · Department of Computer Technologies, Vocational School, Istanbul Okan University · hasan.oguz@okan.edu.tr
+H. Oguz · Department of Computer Technologies, Vocational School, Istanbul Okan University
 
 For supplementary-package bug reports only (not paper content): please include the output of `validate_paper_claims.py`, your NumPy/MATLAB versions, and a minimal reproducer.

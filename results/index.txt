@@ -1,0 +1,45 @@
+SOTHE Supplementary — Results index
+====================================
+
+validation_run.json
+    Machine-readable structured output of make_validation_figure.py.
+    Schema:
+      run_date_utc, elapsed_seconds,
+      gsl_test  = { params, Delta_S_tot_nats, eta_GSL_final,
+                    fraction_local_decreases, photon_number_drift,
+                    paper_range_*, passes }
+      phase_matching_test = { delta3, k_RR, product_k_RR_times_delta3,
+                              c_RR_fit, product_mean, product_std,
+                              relative_spread_percent,
+                              paper_c_RR, paper_product_mean, passes }
+
+validation_run.txt
+    Human-readable version of validation_run.json. The "PASS: True"
+    lines at the bottom of each section are the certification.
+
+entropy_trajectory.csv
+    Per-step record of the nominal GSL run.
+    Columns: xi, S_hor, S_rad, S_tot, eta_GSL, P_norm.
+    200 rows, xi from 0 to 12.
+    Photon-number drift visible in the P_norm column: < 1e-3 throughout.
+
+phase_matching_scan.csv
+    Cherenkov scan data.
+    Columns: delta3, k_RR, k_RR_times_delta3.
+    5 rows for delta_3 in [0.06, 0.10].
+    The mean of the third column is the headline number ~1.02.
+
+summary_run1.txt
+    Production-run summary: reformulated entropy across mask schemes
+    (truncated GNLSE).  Demonstrates that S_hor(0) = 2.405,
+    S_tot(end) = 4.336 -> Delta S_tot = +1.93 nats, eta_GSL = 0.54
+    across all three mask schemes (variance < 10^-3 between schemes).
+    Addresses Referee 2 Points 1-3.
+
+summary_run2.txt
+    Production-run summary: truncated vs full GNLSE (Raman + beta_4).
+    Documents the loss of optical-only GSL when Raman is active and
+    its restoration once the phonon-bath term is included in the
+    Clausius accounting. Addresses Referee 1 on model completeness.
+
+End of results/index.txt.

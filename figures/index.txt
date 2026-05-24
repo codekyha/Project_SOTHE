@@ -1,0 +1,73 @@
+SOTHE Supplementary — Figures index
+====================================
+
+fig_evolution_optical_event_horizon.png
+    Bipartite spectral partitioning of a fission output, with the
+    soliton (blue band) and the radiation (red band, including the
+    Cherenkov lobe at +40 rad/ps), and the corresponding spectral
+    entropy density -p ln p of the radiation subsystem (purple).
+    Total entropy of the radiation in this snapshot: ~2.93 nats.
+    This is the explanatory diagram of the partition scheme; the data
+    are synthetic (two Gaussians) to make the partition visually clean.
+
+fig_thermo_analysis_sol.png
+    Main result, dimensionless GNLSE. Three panels:
+      (a) spectral evolution showing the soliton ridge near k=0 and
+          the Cherenkov dispersive wave near k=+13 (1/T0),
+      (b) S_tot, <S_tot>, S_hor, S_rad on the left axis and the
+          coarse-grained eta_GSL on the right axis. Note eta_GSL stays
+          comfortably above the 0.5 random-walk baseline,
+      (c) measured k_RR vs delta_3 with the through-origin
+          c_RR/delta_3 fit superimposed. Inset: log-spectrum showing
+          the Cherenkov lobe.
+    Parameters: N=3.5, delta_3 in [0.06, 0.10], xi_max=12, Nt=2^14.
+
+fig_run1.png
+    Run 1: reformulated entropy under the truncated GNLSE, across
+    three mask schemes (static, dynamic centroid, comoving envelope).
+    All three give identical S_tot(xi) within line width and the same
+    Delta S_tot = +1.93 nats, eta_GSL = 0.54. Addresses Referee 2
+    Points 1-3 on definitional consistency.
+
+fig_run2.png
+    Run 2: truncated vs full (Raman + beta_4) GNLSE robustness.
+    Truncated case: Delta S_tot = +1.93 (independent of mask width).
+    Full case: optical-only entropy drops to ~+0.1 nats because Raman
+    couples energy to the phonon bath; once that channel is added,
+    Delta S_tot >> 0 again. Establishes that the truncated-GNLSE GSL
+    is the integrability-breaking baseline.
+
+fig_run3.png
+    Run 3: parameter-sweep heatmap across N in [2.5, 4.5] x delta_3 in
+    [0, 0.10]. (a) Delta S_tot, (b) eta_GSL, (c) effective kappa,
+    (d) line-slice Delta S_tot vs delta_3 at fixed N. The GSL holds
+    everywhere (all cells positive). 300 configurations total
+    (5 x 5 x 4 x 3 in the production sweep; this figure shows the
+    5 x 5 reduction at fixed mask config).
+
+fig_run4.png
+    Run 4: robustness of the (withdrawn) thermal-tail fit.
+    (a) Boltzmann kappa at three xi positions -- inconsistent.
+    (b) Bose-Einstein kappa -- drifts in the opposite direction.
+    (c) kappa vs R^2 of the fit -- the canonical anticorrelation that
+        diagnoses a non-thermal line shape being forced through a
+        single-slope fit.
+    This figure is the empirical justification for the withdrawal of
+    the original submission's T_H extraction in favour of the
+    phase-matching law k_RR * delta_3 = const.
+
+fig_run5.png
+    Run 5: pulse-shape sensitivity of the GSL. Sech, Gaussian,
+    super-Gaussian (m=4), and chirped-sech initial conditions all
+    give Delta S_tot in [+0.87, +1.93] -- positive in every case.
+    The super-Gaussian gives the lowest value because it launches
+    less into the integrability-breaking channel.
+
+validation_figure.png
+    Fresh output of make_validation_figure.py, included so the reader
+    can see what a re-run of the package on a generic Python install
+    produces. Same three-panel layout as fig_thermo_analysis_sol.png
+    but with somewhat lighter grids (Nt=2^13, xi_max=12).
+    Headline values printed in panel titles.
+
+End of figures/index.txt.

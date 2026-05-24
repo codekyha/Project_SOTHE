@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "SOTHE Supplementary: code and data for 'Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories'"
+message: "If you use this software or data, please cite the associated paper."
+type: software
+authors:
+  - given-names: Hasan
+    family-names: Oguz
+    email: hasan.oguz@okan.edu.tr
+    affiliation: "Department of Computer Technologies, Vocational School, Istanbul Okan University"
+preferred-citation:
+  type: article
+  authors:
+    - given-names: Hasan
+      family-names: Oguz
+  title: "Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories"
+  journal: "Classical and Quantum Gravity"
+  year: 2026
+  notes: "Manuscript CQG-114816. arXiv:2601.05156"
+identifiers:
+  - type: other
+    value: "arXiv:2601.05156"
+    description: "arXiv preprint identifier"
+keywords:
+  - analog gravity
+  - generalized second law
+  - optical event horizon
+  - GNLSE
+  - integrability breaking
+  - Cherenkov radiation
+license: MIT

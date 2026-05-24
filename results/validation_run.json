@@ -1,0 +1,56 @@
+{
+  "run_date_utc": "2026-05-24 17:59:39",
+  "elapsed_seconds": 17.95,
+  "gsl_test": {
+    "params": {
+      "N_sol": 3.5,
+      "delta3": 0.02,
+      "xi_max": 12.0,
+      "Nt": 8192,
+      "n_steps": 4000
+    },
+    "Delta_S_tot_nats": 1.8143,
+    "eta_GSL_final": 0.5452,
+    "fraction_local_decreases": 0.4774,
+    "photon_number_drift": 1.39136646638858e-12,
+    "paper_range_Delta_S_tot": [
+      0.82,
+      2.42
+    ],
+    "paper_range_eta_GSL": [
+      0.52,
+      0.62
+    ],
+    "passes": true
+  },
+  "phase_matching_test": {
+    "delta3": [
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1
+    ],
+    "k_RR": [
+      15.252027048607145,
+      12.597270324332394,
+      13.64761691568756,
+      12.220634641824196,
+      10.99197763861198
+    ],
+    "product_k_RR_times_delta3": [
+      0.9151216229164286,
+      0.8818089227032676,
+      1.0918093532550048,
+      1.0998571177641776,
+      1.099197763861198
+    ],
+    "c_RR_fit": 0.9871,
+    "product_mean": 1.0176,
+    "product_std": 0.0978,
+    "relative_spread_percent": 9.62,
+    "paper_c_RR": 1.01,
+    "paper_product_mean": 1.02,
+    "passes": true
+  }
+}

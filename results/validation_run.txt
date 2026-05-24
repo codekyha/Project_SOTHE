@@ -1,0 +1,20 @@
+SOTHE Supplementary -- Python validation run
+============================================================
+Date (UTC): 2026-05-24 17:59:39
+Elapsed: 17.95 s
+
+[1] Nominal-point GSL
+  Delta S_tot         =   +1.814 nats
+  eta_GSL(xi_f)       =    0.545
+  fraction dS/dxi<0   =    47.74 %
+  photon-number drift = +1.39e-12
+  PASS: True
+
+[2] Cherenkov phase-matching
+  delta_3 grid : [0.06, 0.07, 0.08, 0.09, 0.1]
+  k_RR         : [15.252, 12.597, 13.648, 12.221, 10.992]
+  product      : [0.915, 0.882, 1.092, 1.1, 1.099]
+  c_RR fit     = 0.987    (paper: 1.01)
+  product mean = 1.018    (paper: 1.02)
+  product std  = 0.098    (9.6% rel.)
+  PASS: True

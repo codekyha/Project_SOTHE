@@ -1,8 +1,8 @@
 # SOTHE — Supplementary Material
 
-Companion data and code for the revision of:
+Companion data and code for the manuscript of:
 
-> H. Oguz, *Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories*, **Classical and Quantum Gravity** (manuscript CQG-114816, revision submitted 2026).  https://doi.org/10.48550/arXiv.2601.05156
+> H. Oguz, *Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories*,  https://doi.org/10.48550/arXiv.2601.05156
 
 
 This is a **lightweight** supplementary package: it contains exactly what is needed to reproduce the paper's three headline claims (coarse-grained generalized second law, Hamiltonian photon-number conservation, Cherenkov phase-matching $k_{\mathrm{RR}}\delta_3\approx 1$), the figures that appear in the paper, and a small set of pre-computed numerical results. A larger codebase will accompany the published version on GitHub.

@@ -126,5 +126,5 @@ The MATLAB and Python sources are released under the **MIT License**. The figure
 
 ---
 
-Disclaimer
+##Disclaimer
 This code package is provided "AS IS", without any guarantee or warranty of any kind, express or implied. The entire risk as to the quality and performance of the code is with you. No support, maintenance, or updates are promised.

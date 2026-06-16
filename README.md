@@ -19,6 +19,7 @@ SOTHE_Supplementary/
 │
 ├── codes/                            MATLAB sources (primary) + Python validator
 │   ├── spectral_entropy.m            Shannon entropy on a masked spectrum (Eq. 2/5)
+│   ├── compute_dxic.m                Operational coarse-graining scale and window robustness.
 │   ├── soliton_mask.m                adaptive super-Gaussian soliton-following mask
 │   ├── eta_gsl.m                     coarse-grained GSL efficiency (Eq. 8)
 │   ├── gnlse_dimensionless.m         symmetric SSFM solver, corrected TOD sign (Eq. 9)
@@ -93,6 +94,7 @@ example_phase_matching_scan;                   % ~5 min, full delta_3 scan
 
 | Script | Role |
 |---|---|
+| `compute_dxic.m` | Implements the operational definition of coarse graning|
 | `spectral_entropy.m` | Shannon entropy of a normalized spectral distribution on a mask. Same routine for $S_{\mathrm{hor}}$ and $S_{\mathrm{rad}}$. |
 | `soliton_mask.m` | Builds a super-Gaussian mask centred on the moving soliton centroid. |
 | `eta_gsl.m` | Coarse-grained efficiency $\eta_{\mathrm{GSL}} = \sum_+|\Delta S|/\sum|\Delta S|$. $1/2$ is the random-walk baseline. |

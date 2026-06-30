@@ -4,22 +4,22 @@ message: "If you use this software or data, please cite the associated paper."
 type: software
 authors:
   - given-names: Hasan
-    family-names: Oguz
+    family-names: OĞUZ
     email: hasan.oguz@okan.edu.tr
     affiliation: "Department of Computer Technologies, Vocational School, Istanbul Okan University"
+date-released: 2026-06-23
 preferred-citation:
   type: article
   authors:
     - given-names: Hasan
-      family-names: Oguz
+      family-names: OĞUZ
   title: "Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories"
-  journal: "Preprint"
   year: 2026
-  notes: " arXiv:2601.05156"
+  doi: "10.1088/1361-6382/ae811b"
 identifiers:
-  - type: other
-    value: "arXiv:2601.05156"
-    description: "arXiv preprint identifier"
+  - type: doi
+    value: "10.1088/1361-6382/ae811b"
+    description: "Published article DOI"
 keywords:
   - analog gravity
   - generalized second law

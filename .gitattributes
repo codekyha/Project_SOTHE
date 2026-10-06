@@ -1,0 +1,7 @@
+# Check out text files with LF on every platform, so MANIFEST.sha256 verifies on Windows clones too.
+* text=auto eol=lf
+*.png binary
+*.pdf binary
+*.npz binary
+*.mat binary
+*.gz binary

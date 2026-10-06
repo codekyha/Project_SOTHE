@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+runs/
+config/site.env
+config/site.env.detected
+SOTHE-P2-SWEEP_results_*.tar.gz
+SOTHE-P2-SWEEP_results_*.tar.gz.sha256
+*.part

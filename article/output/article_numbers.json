@@ -1,0 +1,509 @@
+{
+ "beta0_kop": {
+  "value": 0.95625,
+  "source": "closed form k^2/2 - d3 k^3"
+ },
+ "S_kop": {
+  "value": 0.9541464875877229,
+  "source": "closed form"
+ },
+ "vg0_kop": {
+  "value": 1.1625,
+  "source": "closed form k - 3 d3 k^2"
+ },
+ "kappa_closed": {
+  "value": 0.9541464875877229,
+  "source": "closed form N S(k_op)"
+ },
+ "T_H_closed": {
+  "value": 0.15185712993335587,
+  "source": "closed form"
+ },
+ "HP_closed": {
+  "value": 6.585136966824415,
+  "source": "closed form"
+ },
+ "mu": {
+  "value": 0.5,
+  "source": "closed form"
+ },
+ "c_match": {
+  "value": 1.109195291820728,
+  "source": "closed form |v_g0| S"
+ },
+ "two_c_match": {
+  "value": 2.218390583641456,
+  "source": "closed form"
+ },
+ "lambda": {
+  "value": 0.8602150537634408,
+  "source": "closed form N/|v_g0|"
+ },
+ "dtau": {
+  "value": 0.009768009768009768,
+  "source": "grid"
+ },
+ "eq7pp_mid": {
+  "value": -4.1185376578134784e-05,
+  "source": "closed form, s = dtau/2"
+ },
+ "eq7pp_node": {
+  "value": -2.3534500901791303e-05,
+  "source": "closed form, s = 0"
+ },
+ "band_rel": {
+  "value": 1.7650875676343478e-05,
+  "source": "closed form"
+ },
+ "band_abs": {
+  "value": 1.6841521029430704e-05,
+  "source": "closed form"
+ },
+ "cells_per_step": {
+  "value": 3.8390625,
+  "source": "closed form Delta d/(2 N dtau)"
+ },
+ "tau_h_range": {
+  "value": 0.15,
+  "source": "closed form max |tau_h| = 0.3/(2N)"
+ },
+ "kappa_num": {
+  "value": 0.9541071931229398,
+  "source": "job 530429 B10"
+ },
+ "T_H_num": {
+  "value": 0.15185087602504949,
+  "source": "job 530429 B10"
+ },
+ "deficit_obs": {
+  "value": -4.1182842775544515e-05,
+  "source": "job 530429 B10"
+ },
+ "drive_values": {
+  "value": [
+   0.7,
+   0.7749999999999999,
+   0.85,
+   0.925,
+   1.0,
+   1.075,
+   1.15,
+   1.225,
+   1.3
+  ],
+  "source": "job 530429 B10 CSV"
+ },
+ "kappa_drive": {
+  "value": [
+   0.9541157419704831,
+   0.9541228950395378,
+   0.9541141717950745,
+   0.9541089377973566,
+   0.9541071931229398,
+   0.954108937797353,
+   0.9541141717950652,
+   0.954122895039549,
+   0.9541157419704831
+  ],
+  "source": "job 530429 B10 CSV"
+ },
+ "drive_spread_abs": {
+  "value": 1.570191660915654e-05,
+  "source": "job 530429 B10 CSV"
+ },
+ "drive_spread_rel": {
+  "value": 1.645650517338715e-05,
+  "source": "job 530429 B10 CSV / closed kappa"
+ },
+ "eq7pp_drive_max_abs_dev": {
+  "value": 2.4176188828661793e-09,
+  "source": "B10 values against Eq. (7pp)"
+ },
+ "eq7pp_spread_rel_dev": {
+  "value": 0.00010511295588746604,
+  "source": "B10 values against Eq. (7pp)"
+ },
+ "mirror_max": {
+  "value": 1.1102230246251565e-14,
+  "source": "job 530429 B10 CSV (d and 2-d pairs)"
+ },
+ "flow_kg": {
+  "value": [
+   0.0,
+   0.05,
+   0.1,
+   0.15,
+   0.2,
+   0.25,
+   0.3,
+   0.35,
+   0.4,
+   0.45,
+   0.5,
+   0.55,
+   0.6,
+   0.65,
+   0.7,
+   0.75,
+   0.8,
+   0.85,
+   0.9,
+   0.95,
+   1.0
+  ],
+  "source": "job 530429 B10 CSV"
+ },
+ "flow_kappa": {
+  "value": [
+   0.9999588171572189,
+   0.9985946743833503,
+   0.9945355015184935,
+   0.9878788410536983,
+   0.9787801372573697,
+   0.9674429890786369,
+   0.9541071931229398,
+   0.9390358657585881,
+   0.9225028580148684,
+   0.9047814391946363,
+   0.8861349001529367,
+   0.8668093902160297,
+   0.8470290100089566,
+   0.8269929677030039,
+   0.8068744760410258,
+   0.7868210124953305,
+   0.7669555667627763,
+   0.7473785382432019,
+   0.7281700033469942,
+   0.7093921350297043,
+   0.6910916161358844
+  ],
+  "source": "job 530429 B10 CSV"
+ },
+ "flow_monotone": {
+  "value": true,
+  "source": "job 530429 B10 CSV"
+ },
+ "continuity": {
+  "value": [
+   {
+    "N": 1.0,
+    "kappa": 0.9999588171572189,
+    "extracted_deficit": 4.118284278109563e-05,
+    "eq7pp_deficit": 4.1185376578134784e-05,
+    "rel": 6.152176451142023e-05
+   },
+   {
+    "N": 2.0,
+    "kappa": 1.999670598053568,
+    "extracted_deficit": 0.00032940194643193976,
+    "eq7pp_deficit": 0.00032948301262507827,
+    "rel": 0.00024604058489278107
+   },
+   {
+    "N": 3.0,
+    "kappa": 2.9988886102317207,
+    "extracted_deficit": 0.0011113897682792917,
+    "eq7pp_deficit": 0.0011120051676096394,
+    "rel": 0.0005534140921939644
+   }
+  ],
+  "source": "B1 code path (kappa_extract) at k_op = 1.5; N = 1, 2 also in job 530429 B1"
+ },
+ "continuity_530429_check": {
+  "value": {
+   "1.0": [
+    0.9999588171572189,
+    0.9999588171572189
+   ],
+   "2.0": [
+    1.999670598053568,
+    1.999670598053568
+   ]
+  },
+  "source": "job 530429 B1 kin_grid.csv vs container"
+ },
+ "parity_table2": {
+  "value": [
+   [
+    "odd",
+    4095,
+    -0.3333239152116135
+   ],
+   [
+    "odd",
+    8191,
+    -0.33333098053944316
+   ],
+   [
+    "odd",
+    16383,
+    -0.3333327538952539
+   ],
+   [
+    "odd",
+    32767,
+    -0.333333116005567
+   ],
+   [
+    "odd",
+    65535,
+    -0.3333334364489354
+   ],
+   [
+    "even",
+    4096,
+    -0.5832974455587446
+   ],
+   [
+    "even",
+    8192,
+    -0.5833243844274145
+   ],
+   [
+    "even",
+    16384,
+    -0.5833310861620914
+   ],
+   [
+    "even",
+    32768,
+    -0.5833328030751652
+   ],
+   [
+    "even",
+    65536,
+    -0.5833328621230233
+   ]
+  ],
+  "source": "B9 code path at the anchor"
+ },
+ "thermality_slope": {
+  "value": -6.585408172653809,
+  "source": "job 530429 B10"
+ },
+ "thermality_R2": {
+  "value": 1.0,
+  "source": "job 530429 B10"
+ },
+ "kappa_fit": {
+  "value": 0.9541071931229387,
+  "source": "job 530429 B10"
+ },
+ "flux_residual": {
+  "value": 2.220446049250313e-16,
+  "source": "job 530429 B10"
+ },
+ "EN_005": {
+  "value": 2.499466479120473,
+  "source": "closed form at closed kappa"
+ },
+ "EN_mu": {
+  "value": 0.39041427485113206,
+  "source": "closed form at closed kappa"
+ },
+ "EN_16": {
+  "value": 0.010306778014819308,
+  "source": "closed form at closed kappa"
+ },
+ "nu_max": {
+  "value": 0.9897461548099911,
+  "source": "closed form"
+ },
+ "EN_3kappa": {
+  "value": 0.00016139903549097494,
+  "source": "closed form, kappa-independent 2 e^{-3 pi}"
+ },
+ "IR_asym_005": {
+  "value": 2.4972114998734756,
+  "source": "closed form ln(2 kappa/pi omega)"
+ },
+ "IR_dev_005": {
+  "value": 0.0022549792469974683,
+  "source": "closed form"
+ },
+ "nbar_peak": {
+  "value": 5.587998039671274,
+  "source": "closed form"
+ },
+ "nbar_mu": {
+  "value": 0.23879639832053812,
+  "source": "closed form"
+ },
+ "nbar_band": {
+  "value": 0.005180037901727164,
+  "source": "closed form"
+ },
+ "EN_mu_eta": {
+  "value": [
+   0.3904142748511321,
+   0.34376041031320975,
+   0.176274013132266,
+   0.032856259051275226
+  ],
+  "source": "closed form, loss channel"
+ },
+ "EN_cross_max": {
+  "value": 4.440892098500626e-16,
+  "source": "job 530429 B10 CSV"
+ },
+ "band_frac_above_mu": {
+  "value": 0.7096774193548387,
+  "source": "closed form"
+ },
+ "omega_thermal_n_at_mu": {
+  "value": 0.03859231039870371,
+  "source": "closed form"
+ },
+ "census": {
+  "value": [
+   {
+    "frame": "lab",
+    "epoch": null,
+    "Vd": 0.0,
+    "Phi_pair": 0.9871382636655949,
+    "Phi_up_low": 0.7106109324758842,
+    "omega_max_pair": 1.5829914104762604,
+    "window": [
+     0.5,
+     1.5829914104762604
+    ],
+    "window_frac": 0.6987041357911357
+   },
+   {
+    "frame": "xi0-5",
+    "epoch": [
+     0,
+     5
+    ],
+    "Vd": -0.042394013757808914,
+    "Phi_pair": 1.0,
+    "Phi_up_low": 0.7106109324758842,
+    "omega_max_pair": 1.727180728250635,
+    "window": [
+     0.5,
+     1.6
+    ],
+    "window_frac": 0.7096774193548387
+   },
+   {
+    "frame": "xi5-10",
+    "epoch": [
+     5,
+     10
+    ],
+    "Vd": -0.05491090174256617,
+    "Phi_pair": 1.0,
+    "Phi_up_low": 0.7106109324758842,
+    "omega_max_pair": 1.7705660434602573,
+    "window": [
+     0.5,
+     1.6
+    ],
+    "window_frac": 0.7096774193548387
+   },
+   {
+    "frame": "xi10-20",
+    "epoch": [
+     10,
+     20
+    ],
+    "Vd": -0.05108839098686384,
+    "Phi_pair": 1.0,
+    "Phi_up_low": 0.7106109324758842,
+    "omega_max_pair": 1.7572775155468272,
+    "window": [
+     0.5,
+     1.6
+    ],
+    "window_frac": 0.7096774193548387
+   },
+   {
+    "frame": "xi20-30",
+    "epoch": [
+     20,
+     30
+    ],
+    "Vd": -0.051692773126903936,
+    "Phi_pair": 1.0,
+    "Phi_up_low": 0.7106109324758842,
+    "omega_max_pair": 1.7593762917953721,
+    "window": [
+     0.5,
+     1.6
+    ],
+    "window_frac": 0.7096774193548387
+   },
+   {
+    "frame": "xi30-40",
+    "epoch": [
+     30,
+     40
+    ],
+    "Vd": -0.05199427078889571,
+    "Phi_pair": 1.0,
+    "Phi_up_low": 0.7106109324758842,
+    "omega_max_pair": 1.7604235936589498,
+    "window": [
+     0.5,
+     1.6
+    ],
+    "window_frac": 0.7096774193548387
+   }
+  ],
+  "source": "job 530429 B10"
+ },
+ "loss_0_40": {
+  "value": 0.0009328024929302625,
+  "source": "job 530047 = 530429 B3"
+ },
+ "loss_HP_after10": {
+  "value": 0.00012808519911189364,
+  "source": "job 530429 B10"
+ },
+ "drift_windows": {
+  "value": [
+   -0.042394013757808914,
+   -0.05491090174256617,
+   -0.05108839098686384,
+   -0.051692773126903936,
+   -0.05199427078889571
+  ],
+  "source": "job 530047 = 530429 B3"
+ },
+ "HP_in_40": {
+  "value": 6.074285197334234,
+  "source": "closed form"
+ },
+ "op_old_loss": {
+  "value": {
+   "c": 0.009188465131584696,
+   "loss_0_40": 0.03495912103703813,
+   "loss_first_hp": 0.002837452753217451,
+   "drift": [
+    -0.3133257814873651,
+    -0.5255894124701768
+   ]
+  },
+  "source": "job 530047 = 530429 B3 at (2, 0.05)"
+ },
+ "P0_W": {
+  "value": 60000.0,
+  "source": "closed form N^2 |beta2|/(gamma T0^2)"
+ },
+ "E_pulse_J": {
+  "value": 6e-09,
+  "source": "closed form 2 P0 T0"
+ },
+ "f_kop_THz": {
+  "value": 4.7746482927568605,
+  "source": "closed form"
+ },
+ "L_D_m": {
+  "value": 0.16666666666666666,
+  "source": "closed form"
+ },
+ "beta3_ps3_km": {
+  "value": 0.225,
+  "source": "closed form 6 |beta2| T0 delta3"
+ }
+}

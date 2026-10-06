@@ -1,0 +1,23 @@
+# run folders, results and build products
+runs/
+dist/
+SOTHE-P2_results_*.tar.gz
+SOTHE-P2_results_*.tar.gz.sha256
+SOTHE-P2_v*.tar.gz
+SOTHE-P2_v*.tar.gz.sha256
+# site configuration written by `python p2.py install`
+config/site.env
+config/site.env.detected
+# Python and editors
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini

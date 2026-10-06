@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software package and the associated paper."
+title: "SOTHE — Generalized Thermodynamics of Solitonic Event Horizons: Data and Code Package"
+authors:
+  - family-names: Oguz
+    given-names: Hasan
+    affiliation: "Istanbul Okan University; Pamukkale University"
+    email: hasan.oguz@okan.edu.tr
+version: "1.0.0"
+date-released: "2026-05-21"
+license: MIT
+repository-code: "https://github.com/hasan-oguz/SOTHE"   # update when public
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Oguz
+      given-names: Hasan
+      affiliation: "Istanbul Okan University; Pamukkale University"
+  title: "Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories"
+  journal: "Classical and Quantum Gravity"
+  year: 2026
+  doi: ""             # populate on acceptance
+  url: ""             # populate on acceptance
+abstract: >-
+  This package contains the MATLAB and Python code that reproduces the
+  figures and the headline numerical claims of the paper, including the
+  300-configuration coarse-grained generalized-second-law sweep, the
+  Cherenkov phase-matching scaling k_RR * delta3 = const, and the
+  diagnostic spectral-entropy and entropy-production-efficiency
+  computations. The dispersion convention is the integrability-consistent
+  anomalous-dispersion form (+i delta3 d^3/dtau^3); the original
+  submission's Boltzmann thermal-tail fit is withdrawn and replaced by a
+  positive identification of the radiation as a coherent phase-matched
+  Cherenkov resonance.
+keywords:
+  - analog gravity
+  - optical event horizon
+  - nonequilibrium thermodynamics
+  - generalized second law
+  - soliton fission
+  - resonant radiation
+  - Cherenkov phase matching
+  - GNLSE

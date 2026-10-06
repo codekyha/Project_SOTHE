@@ -1,0 +1,6 @@
+# SOTHE-P2 runtime dependencies (Python >= 3.9).  Tested: NumPy 1.26.4 + Matplotlib 3.8.4 (UHeM Altay Anaconda module)
+# and NumPy 2.2.6 + Matplotlib 3.10.9.
+numpy>=1.21
+matplotlib>=3.5
+# optional: stage S6 also writes phase2_bundle.mat when SciPy is installed
+# scipy>=1.7

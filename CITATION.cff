@@ -1,30 +1,48 @@
 cff-version: 1.2.0
-title: "SOTHE Supplementary: code and data for 'Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories'"
-message: "If you use this software or data, please cite the associated paper."
+message: "If you use this software, please cite it with the metadata below (and the paper it supports, once published)."
 type: software
+title: "SOTHE-P2: code and data for the Paper-2 computations of the SOTHE project"
+abstract: >-
+  Python (NumPy, Matplotlib) implementation of the numerical results of the second SOTHE paper on solitonic
+  event horizons in dispersive media: Bogoliubov-de Gennes spectra about the stationary third-order-dispersion
+  soliton, radiative loss of the soliton core from direct integration of the generalized nonlinear
+  Schroedinger equation, the kinematic surface gravity with its thermal and entanglement layers, the data
+  products and the figures. A rewrite of the project's MATLAB programs; runs on a laptop or on a SLURM cluster.
 authors:
-  - given-names: Hasan
-    family-names: OĞUZ
+  - family-names: Oguz
+    given-names: Hasan
+    orcid: "https://orcid.org/0000-0001-7484-4415"
+    affiliation: "Istanbul Okan University; Pamukkale University"
     email: hasan.oguz@okan.edu.tr
-    affiliation: "Department of Computer Technologies, Vocational School, Istanbul Okan University"
-date-released: 2026-06-23
-preferred-citation:
-  type: article
-  authors:
-    - given-names: Hasan
-      family-names: OĞUZ
-  title: "Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories"
-  year: 2026
-  doi: "10.1088/1361-6382/ae811b"
-identifiers:
-  - type: doi
-    value: "10.1088/1361-6382/ae811b"
-    description: "Published article DOI"
+version: "1.0.0"
+date-released: "2026-09-27"
+doi: "10.5281/zenodo.23156910"
+license: MIT
+repository-code: "https://github.com/codekyha/Project_SOTHE/tree/p2"
 keywords:
   - analog gravity
-  - generalized second law
   - optical event horizon
-  - GNLSE
-  - integrability breaking
-  - Cherenkov radiation
-license: MIT
+  - soliton
+  - Bogoliubov-de Gennes
+  - resonant radiation
+  - third-order dispersion
+  - generalized nonlinear Schroedinger equation
+  - surface gravity
+references:
+  - type: software
+    title: "Supplementary: code and data for 'Generalized Thermodynamics of Solitonic Event Horizons in Dispersive Field Theories'"
+    authors:
+      - family-names: Oguz
+        given-names: Hasan
+    version: "1.0.0"
+    year: 2026
+    doi: 10.5281/zenodo.20713660
+  - type: article
+    title: "Generalized thermodynamics of solitonic event horizons in dispersive field theories"
+    authors:
+      - family-names: Oguz
+        given-names: Hasan
+    journal: "Classical and Quantum Gravity"
+    volume: 43
+    year: 2026
+    doi: 10.1088/1361-6382/ae811b

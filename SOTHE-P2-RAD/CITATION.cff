@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it with the metadata below (and the paper it supports, once published)."
+type: software
+title: "SOTHE-P2-RAD: steady Cherenkov emission and recoil dynamics of solitons with third-order dispersion"
+abstract: >-
+  Python (NumPy, SciPy, Matplotlib) package for the emission computations of the second SOTHE paper: split-step
+  integration of the generalized nonlinear Schroedinger equation with third-order dispersion for adiabatically prepared
+  and for launched solitons, the steady Cherenkov emission rate measured from the radiation behind the soliton, the
+  scaled rate function of the local soliton, and a norm- and momentum-balance model of the recoil of a resonantly
+  radiating soliton, with the article figure and tables. Runs on a laptop or on a SLURM cluster.
+authors:
+  - family-names: Oguz
+    given-names: Hasan
+    orcid: "https://orcid.org/0000-0001-7484-4415"
+    affiliation: "Istanbul Okan University; Pamukkale University"
+    email: hasan.oguz@okan.edu.tr
+version: "1.0.0"
+date-released: "2026-10-06"
+doi: "10.5281/zenodo.23156910"
+license: MIT
+repository-code: "https://github.com/codekyha/Project_SOTHE/tree/p2"
+keywords:
+  - optical event horizon
+  - soliton
+  - resonant radiation
+  - Cherenkov radiation
+  - soliton recoil
+  - third-order dispersion
+  - generalized nonlinear Schroedinger equation
+references:
+  - type: software
+    title: "SOTHE-P2: code and data for the Paper-2 computations of the SOTHE project"
+    authors:
+      - family-names: Oguz
+        given-names: Hasan
+    version: "1.0.0"
+    year: 2026
+    doi: 10.5281/zenodo.23156910

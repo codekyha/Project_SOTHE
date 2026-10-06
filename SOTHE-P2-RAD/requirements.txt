@@ -1,0 +1,5 @@
+# SOTHE-P2-RAD runtime dependencies (Python >= 3.9).
+# Tested: Python 3.13.16, NumPy 2.5.3, SciPy 1.18.1, Matplotlib 3.11.2 (the run of the results archive).
+numpy>=1.21
+scipy>=1.7
+matplotlib>=3.5

@@ -1,10 +1,12 @@
-"""Figures 1 to 3, 5, 6 and S1 of the article "Linear spectrum, radiative loss and emission channels of solitons with third-order dispersion underlying optical analogue horizons" (H. Oguz, 2026), from the archived runs of SOTHE-P2 1.0.0 and SOTHE-P2-SWEEP 1.0.0.
-The files fig4_channels and fig5_entanglement are Figs. 5 and 6 of the article; Fig. 4 is drawn by SOTHE-P2-RAD 1.0.0 (rad.py figures).
+"""Figures 1, 2, 4, 5, 6 and S1 of the article "Bogoliubov-de Gennes spectrum, Cherenkov radiation and recoil of solitons with third-order dispersion underlying optical analogue horizons" (H. Oguz, 2026), from the archived runs of SOTHE-P2 1.0.0 and SOTHE-P2-SWEEP 1.0.0.
+The file names and the figure numbers in this script follow the record text: fig2_bdg_krein is Fig. 1, fig3_radiative_loss Fig. 2,
+fig1_kinematics Fig. 4, fig4_channels Fig. 5 and fig5_entanglement Fig. 6 of the article; Fig. 3 is drawn by SOTHE-P2-RAD 1.0.0
+(rad.py figures).
 
 Operating point (N, delta3, kappa_g, k_op) = (1, 0.05, 0.3, 1.5). Style: sothe_p2.pubstyle (IOP widths 8.5 / 15 cm, Computer
 Modern, no titles, no annotation).
 Data: SOTHE-P2-SWEEP 1.0.0, UHeM Altay job 530429 (run 20260928T131100Z): the B10 anchor CSV files, the B3 series and points, the
-B4 census, the B5 spectrum at delta3 = 0.05 and the B7 scattering solve; closed forms (surface gravity, E_N, the boost edge).
+B4 census, the B5 spectrum at delta3 = 0.05 and the B7 scattering calculation; closed forms (surface gravity, E_N, the boost edge).
 Fig. 2(a): SOTHE-P2 1.0.0, job 530047 (run 20260927T175224Z), stage S5 figure data.
 
 Environment variables (or edit the constants below):

@@ -1,4 +1,4 @@
-"""Numbers quoted in the article "Linear spectrum, radiative loss and emission channels of solitons with third-order dispersion underlying optical analogue horizons" (H. Oguz, 2026): operating point (N, delta3, kappa_g, k_op) = (1, 0.05, 0.3, 1.5).
+"""Numbers quoted in the article "Bogoliubov-de Gennes spectrum, Cherenkov radiation and recoil of solitons with third-order dispersion underlying optical analogue horizons" (H. Oguz, 2026): operating point (N, delta3, kappa_g, k_op) = (1, 0.05, 0.3, 1.5).
 Sources: closed forms; SOTHE-P2-SWEEP 1.0.0 job 530429 (run 20260928T131100Z); the job 530047 values (SOTHE-P2 1.0.0), which job
 530429 reproduces bitwise; and evaluations of the B1 and B9 code paths of SOTHE-P2-SWEEP (the B1 and B9 tasks of job 530429 are
 bitwise identical on the Altay MKL and on OpenBLAS).

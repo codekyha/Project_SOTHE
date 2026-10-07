@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """zero_sector_tests.py -- the rank, perturbation, convergence, grid-scaling, scan and dispersion tests behind the section "BdG
-discretization and convergence" (S4) of the supplement of the article "Linear spectrum, radiative loss and emission channels of solitons with third-order dispersion underlying optical analogue horizons" (H. Oguz, 2026), and a check of each numerical
+discretization and convergence" (S4) of the supplement of the article "Bogoliubov-de Gennes spectrum, Cherenkov radiation and recoil of solitons with third-order dispersion underlying optical analogue horizons" (H. Oguz, 2026), and a check of each numerical
 statement of that section against them.
 
 Operator. About the stationary third-order-dispersion (TOD) soliton phi the BdG operator is
@@ -87,7 +87,7 @@ TEX_QUOTES = {
     "translation": [r"($6\times10^{-8}$)"],
     "kerM2": [r"at most $1.4\times10^{-16}\sigma_1$ and the next is at least $4.7\times10^{-8}\sigma_1$", r"so $\dim\ker M^2=4$"],
     "slopes": [r"(log-log slopes $0.48$ and $0.51$ at $\dtres=0.02$ and $0.05$)"],
-    "sector": [r"at $1$--$5\times10^{-7}$ with the eigensolvers used", r"they lie below $10^{-6}$"],
+    "sector": [r"at $1$--$5\times10^{-7}$, therefore measure", r"they lie below $10^{-6}$"],
     "floor": [r"of order $\sqrt{\epsilon_{\rm mach}\rho}\approx4$--$6\times10^{-7}$ here"],
     "annulus": [r"$|\mathrm{Im}\,\Omega|<10^{-12}$"],
     "scaling": [r"$\rho$ scales as $n_\tau^{2.4}$ to $n_\tau^{2.6}$"],
@@ -111,7 +111,7 @@ TEX_QUOTES = {
     "neg_energy": [r"Four of them carry negative energy", r"at $\mathrm{Re}\,\Omega=-0.304$ and $-1.348$", r"$+0.304$ and $+1.348$; all $34$ are real to $9.8\times10^{-14}$"],
     "coef": [r"the coefficient is $0.677$ and $0.670$ at $N=1$ for $\dtres=0.02$ and $0.05$, and $0.189$ at",
              r"$N=0.6$ and $3.80$ at $N=2$ for $\dtres=0.02$, against $0.190$ and $3.85$ from the law", r"($3.13$ at $N=2$, $\dtres=0.05$)"],
-    "law_2p5": [r"The scan reproduces this law to within $2.5\%$ for"],
+    "law_2p5": [r"The computed spectra reproduce this law to within $2.5\%$ for"],
 }
 
 

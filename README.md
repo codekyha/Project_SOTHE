@@ -191,15 +191,7 @@ README_UHeM_Altay.md  RELEASE.md  CHANGELOG.md  CITATION.cff  LICENSE
 
 ## Citation and licence
 
-Cite the Zenodo record of this version (DOI above) and, once published, the paper it supports. `CITATION.cff` carries the metadata. The code builds on H. Oguz, *Generalized thermodynamics of solitonic event horizons in dispersive field theories*, Class. Quantum Grav. **43**, 135014 (2026), [doi:10.1088/1361-6382/ae811b](https://doi.org/10.1088/1361-6382/ae811b). Its code and data are at [doi:10.5281/zenodo.20713660](https://doi.org/10.5281/zenodo.20713660) (Ref. [25]; `sothe_p2/ref25/`, MIT).
+Cite the Zenodo record of this version DOI:10.5281/zenodo.23156910 and ArXiv version DOI:10.48550/arXiv.2610.09814
 
 MIT licence ([LICENSE](LICENSE)).
 
-## Releases
-
-[RELEASE.md](RELEASE.md) covers:
-
-- building the release tarball;
-- the Zenodo pack and its manual upload;
-- the `p2` branch, the `p2-v1.0.0` tag and the GitHub release;
-- where the DOI and the tag go afterwards.

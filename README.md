@@ -191,7 +191,7 @@ README_UHeM_Altay.md  RELEASE.md  CHANGELOG.md  CITATION.cff  LICENSE
 
 ## Citation and licence
 
-Cite the Zenodo record of this version DOI:10.5281/zenodo.23156910 and ArXiv version DOI:10.48550/arXiv.2610.09814
+Cite the Zenodo record of this version DOI:10.5281/zenodo.23156910 and ArXiv version DOI:10.48550/arXiv.2610.09814 please cite the main article ArXiv version if you use the data.
 
 MIT licence ([LICENSE](LICENSE)).
 
